@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: kafka
-  namespace: kafka
+#  namespace: kafka
 spec:
   selector:
     matchLabels:
@@ -75,7 +75,7 @@ spec:
             # This limit was intentionally set low as a reminder that
             # the entire Yolean/kubernetes-kafka is meant to be tweaked
             # before you run production workloads
-            memory: 600Mi
+            memory: 2Gi
         readinessProbe:
           tcpSocket:
             port: 9092
@@ -83,7 +83,7 @@ spec:
         volumeMounts:
         - name: config
           mountPath: /etc/kafka
-        - name: data
+        - name: pvc
           mountPath: /var/lib/kafka/data
         - name: extensions
           mountPath: /opt/kafka/libs/extensions
@@ -97,10 +97,10 @@ spec:
         emptyDir: {}
   volumeClaimTemplates:
   - metadata:
-      name: data
+      name: pvc
     spec:
       accessModes: [ "ReadWriteOnce" ]
-      storageClassName: standard
+      storageClassName: local-storage
       resources:
         requests:
-          storage: 10Gi
+          storage: 5Gi

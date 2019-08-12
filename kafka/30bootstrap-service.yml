@@ -2,8 +2,8 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: bootstrap
-  namespace: kafka
+  name: paaslcoud-kafka-cluster
+#  namespace: kafka
 spec:
   ports:
   - port: 9092
