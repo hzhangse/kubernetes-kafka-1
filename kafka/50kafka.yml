@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       app: kafka
-  serviceName: "broker"
+  serviceName: "kafka-hs"
   replicas: 3
   updateStrategy:
     type: RollingUpdate

@@ -3,7 +3,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: broker
+  name: kafka-hs
 #  namespace: kafka
 spec:
   ports:
@@ -12,3 +12,7 @@ spec:
   clusterIP: None
   selector:
     app: kafka
+    
+    
+
+    
